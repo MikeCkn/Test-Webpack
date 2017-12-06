@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import {ComponentOne} from './componentsTry';
+import {InputGuest, GuestList} from './guests';
 
 export default class App extends Component {
 
+//STATE
     state = {
         valueInput: '',
         guestList: [{
@@ -14,6 +15,7 @@ export default class App extends Component {
         }],
     }
 
+//FUNCTIONS
     inputChange = (e) => {
         this.setState({
             valueInput: e.target.value
@@ -31,18 +33,13 @@ export default class App extends Component {
     render() {
         return (
             <div>
-                <ComponentOne
+                <InputGuest
                     valueInput={this.state.valueInput} 
                     inputChange={this.inputChange}
                     inputsubmit={this.inputSubmit}/>
 
-                <ul>
-                    {this.state.guestList.map((guest, index) => 
-                    <li key={index}>
-                        <input type="checkbox"/>
-                        {guest.name}
-                    </li>)}
-                </ul>
+                <GuestList 
+                    guestList={this.state.guestList}/>    
             </div>
         );
     }

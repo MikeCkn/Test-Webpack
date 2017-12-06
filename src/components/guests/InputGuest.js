@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class ComponentOne extends Component {
+export default class InputGuest extends Component {
 
     render() {
         return (

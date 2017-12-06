@@ -18355,6 +18355,8 @@ module.exports = camelize;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__componentsTry__ = __webpack_require__(33);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -18393,40 +18395,34 @@ var App = function (_Component) {
             });
         }, _this.inputSubmit = function (e) {
             e.preventDefault();
-            console.log(_this.state.guestList);
             _this.setState({
-                guestList: _this.state.guestList.push({ name: _this.state.valueInput, confirmed: false })
+                guestList: [].concat(_toConsumableArray(_this.state.guestList), [{ name: _this.state.valueInput, confirmed: false }]),
+                valueInput: ''
             });
-            console.log(_this.state.guestList);
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(App, [{
         key: 'render',
         value: function render() {
-            var _this2 = this;
-
-            var list = function list() {
-                return _this2.state.guestList.map(function (guest, index) {
-                    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'li',
-                        { key: index },
-                        guest.name
-                    );
-                });
-            };
-
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__componentsTry__["a" /* ComponentOne */], {
-                    valueinput: this.state.valueInput,
+                    valueInput: this.state.valueInput,
                     inputChange: this.inputChange,
                     inputsubmit: this.inputSubmit }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'ul',
                     null,
-                    list
+                    this.state.guestList.map(function (guest, index) {
+                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'li',
+                            { key: index },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'checkbox' }),
+                            guest.name
+                        );
+                    })
                 )
             );
         }
@@ -18492,7 +18488,7 @@ var ComponentOne = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
                     type: "text",
                     onChange: this.props.inputChange,
-                    valueinput: this.props.valueInput,
+                    value: this.props.valueInput,
                     placeholder: "Add a guest" }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "button",
@@ -18560,21 +18556,7 @@ var ComponentTwo = function (_Component) {
     _createClass(ComponentTwo, [{
         key: 'render',
         value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'ul',
-                    null,
-                    this.props.guestList.map(function (guest, index) {
-                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'li',
-                            { key: index },
-                            guest.name
-                        );
-                    })
-                )
-            );
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null);
         }
     }]);
 
