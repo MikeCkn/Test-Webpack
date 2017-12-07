@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-export default class InputGuest extends Component {
+export default class GuestInput extends Component {
 
     render() {
         return (
             <div>
                 <input 
-                type="text" 
-                onChange={this.props.inputChange} 
-                value={this.props.valueInput} 
-                placeholder="Add a guest"/>
+                    type="text" 
+                    onChange={this.props.inputChange} 
+                    value={this.props.valueInput} 
+                    placeholder="Add a guest"/>
                 <button onClick={this.props.inputsubmit}>ADD</button>
             </div>
         );

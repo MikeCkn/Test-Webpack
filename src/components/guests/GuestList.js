@@ -7,8 +7,8 @@ export default class GuestList extends Component {
             <div>
                 <ul> {this.props.guestList.map((guest, index) => 
                     <li key={index}>
-                        <input type="checkbox"/>
-                        {guest.name}
+                        <input type="checkbox" onClick={this.props.confirmedStatus}/>
+                        <span style={{color: `${this.props.status}`}}>{guest.name}</span>
                     </li>)}
                 </ul>
             </div>

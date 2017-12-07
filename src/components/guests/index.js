@@ -1,4 +1,4 @@
-import InputGuest from './InputGuest';
+import GuestInput from './GuestInput';
 import GuestList from './GuestList';
 
-export {InputGuest, GuestList};
+export {GuestInput, GuestList};

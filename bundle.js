@@ -18352,7 +18352,7 @@ module.exports = camelize;
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__componentsTry__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__guests__ = __webpack_require__(33);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -18382,6 +18382,7 @@ var App = function (_Component) {
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
             valueInput: '',
+            color: 'red',
             guestList: [{
                 name: 'Bob',
                 confirmed: false
@@ -18389,6 +18390,8 @@ var App = function (_Component) {
                 name: 'Albert',
                 confirmed: false
             }]
+
+            //FUNCTIONS
         }, _this.inputChange = function (e) {
             _this.setState({
                 valueInput: e.target.value
@@ -18396,11 +18399,21 @@ var App = function (_Component) {
         }, _this.inputSubmit = function (e) {
             e.preventDefault();
             _this.setState({
-                guestList: [].concat(_toConsumableArray(_this.state.guestList), [{ name: _this.state.valueInput, confirmed: false }]),
+                guestList: [].concat(_toConsumableArray(_this.state.guestList), [{
+                    name: _this.state.valueInput,
+                    confirmed: false
+                }]),
                 valueInput: ''
+            });
+        }, _this.confirmedStatus = function () {
+            _this.setState({
+                color: 'green'
             });
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
+
+    //STATE
+
 
     _createClass(App, [{
         key: 'render',
@@ -18408,22 +18421,13 @@ var App = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__componentsTry__["a" /* ComponentOne */], {
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__guests__["a" /* GuestInput */], {
                     valueInput: this.state.valueInput,
                     inputChange: this.inputChange,
                     inputsubmit: this.inputSubmit }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'ul',
-                    null,
-                    this.state.guestList.map(function (guest, index) {
-                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'li',
-                            { key: index },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'checkbox' }),
-                            guest.name
-                        );
-                    })
-                )
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__guests__["b" /* GuestList */], {
+                    guestList: this.state.guestList,
+                    confirmedStatus: this.confirmedStatus })
             );
         }
     }]);
@@ -18441,16 +18445,16 @@ var App = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ComponentOne__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ComponentTwo__ = __webpack_require__(35);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__ComponentOne__["a"]; });
-/* unused harmony reexport ComponentTwo */
+/* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__GuestInput__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__GuestList__ = __webpack_require__(35);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__GuestInput__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__GuestList__["a"]; });
 
 
 
 
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } /* eslint-disable camelcase, no-undef */ var webpackExports = typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__ : module.exports; /* eslint-enable camelcase, no-undef */ if (typeof webpackExports === 'function') { __REACT_HOT_LOADER__.register(webpackExports, 'module.exports', "/Users/mc/Simplon/React/testWp/src/components/componentsTry/index.js"); return; } /* eslint-disable no-restricted-syntax */ for (var key in webpackExports) { /* eslint-enable no-restricted-syntax */ if (!Object.prototype.hasOwnProperty.call(webpackExports, key)) { continue; } var namedExport = void 0; try { namedExport = webpackExports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/Users/mc/Simplon/React/testWp/src/components/componentsTry/index.js"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } /* eslint-disable camelcase, no-undef */ var webpackExports = typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__ : module.exports; /* eslint-enable camelcase, no-undef */ if (typeof webpackExports === 'function') { __REACT_HOT_LOADER__.register(webpackExports, 'module.exports', "/Users/mc/Simplon/React/testWp/src/components/guests/index.js"); return; } /* eslint-disable no-restricted-syntax */ for (var key in webpackExports) { /* eslint-enable no-restricted-syntax */ if (!Object.prototype.hasOwnProperty.call(webpackExports, key)) { continue; } var namedExport = void 0; try { namedExport = webpackExports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/Users/mc/Simplon/React/testWp/src/components/guests/index.js"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0), __webpack_require__(3)(module)))
 
 /***/ }),
@@ -18470,16 +18474,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var ComponentOne = function (_Component) {
-    _inherits(ComponentOne, _Component);
+var GuestInput = function (_Component) {
+    _inherits(GuestInput, _Component);
 
-    function ComponentOne() {
-        _classCallCheck(this, ComponentOne);
+    function GuestInput() {
+        _classCallCheck(this, GuestInput);
 
-        return _possibleConstructorReturn(this, (ComponentOne.__proto__ || Object.getPrototypeOf(ComponentOne)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (GuestInput.__proto__ || Object.getPrototypeOf(GuestInput)).apply(this, arguments));
     }
 
-    _createClass(ComponentOne, [{
+    _createClass(GuestInput, [{
         key: "render",
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -18499,7 +18503,7 @@ var ComponentOne = function (_Component) {
         }
     }]);
 
-    return ComponentOne;
+    return GuestInput;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 // getValue = (e) => {
@@ -18522,9 +18526,9 @@ var ComponentOne = function (_Component) {
 //         </form>
 
 
-/* harmony default export */ __webpack_exports__["a"] = (ComponentOne);
+/* harmony default export */ __webpack_exports__["a"] = (GuestInput);
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } /* eslint-disable camelcase, no-undef */ var webpackExports = typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__ : module.exports; /* eslint-enable camelcase, no-undef */ if (typeof webpackExports === 'function') { __REACT_HOT_LOADER__.register(webpackExports, 'module.exports', "/Users/mc/Simplon/React/testWp/src/components/componentsTry/ComponentOne.js"); return; } /* eslint-disable no-restricted-syntax */ for (var key in webpackExports) { /* eslint-enable no-restricted-syntax */ if (!Object.prototype.hasOwnProperty.call(webpackExports, key)) { continue; } var namedExport = void 0; try { namedExport = webpackExports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/Users/mc/Simplon/React/testWp/src/components/componentsTry/ComponentOne.js"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } /* eslint-disable camelcase, no-undef */ var webpackExports = typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__ : module.exports; /* eslint-enable camelcase, no-undef */ if (typeof webpackExports === 'function') { __REACT_HOT_LOADER__.register(webpackExports, 'module.exports', "/Users/mc/Simplon/React/testWp/src/components/guests/GuestInput.js"); return; } /* eslint-disable no-restricted-syntax */ for (var key in webpackExports) { /* eslint-enable no-restricted-syntax */ if (!Object.prototype.hasOwnProperty.call(webpackExports, key)) { continue; } var namedExport = void 0; try { namedExport = webpackExports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/Users/mc/Simplon/React/testWp/src/components/guests/GuestInput.js"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0), __webpack_require__(3)(module)))
 
 /***/ }),
@@ -18544,28 +18548,50 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var ComponentTwo = function (_Component) {
-    _inherits(ComponentTwo, _Component);
+var GuestList = function (_Component) {
+    _inherits(GuestList, _Component);
 
-    function ComponentTwo() {
-        _classCallCheck(this, ComponentTwo);
+    function GuestList() {
+        _classCallCheck(this, GuestList);
 
-        return _possibleConstructorReturn(this, (ComponentTwo.__proto__ || Object.getPrototypeOf(ComponentTwo)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (GuestList.__proto__ || Object.getPrototypeOf(GuestList)).apply(this, arguments));
     }
 
-    _createClass(ComponentTwo, [{
-        key: 'render',
+    _createClass(GuestList, [{
+        key: "render",
         value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null);
+            var _this2 = this;
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "div",
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "ul",
+                    null,
+                    " ",
+                    this.props.guestList.map(function (guest, index) {
+                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "li",
+                            { key: index },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", onClick: _this2.props.confirmedStatus }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                "span",
+                                { style: { color: "" + _this2.props.color } },
+                                guest.name
+                            )
+                        );
+                    })
+                )
+            );
         }
     }]);
 
-    return ComponentTwo;
+    return GuestList;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* unused harmony default export */ var _unused_webpack_default_export = (ComponentTwo);
+/* harmony default export */ __webpack_exports__["a"] = (GuestList);
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } /* eslint-disable camelcase, no-undef */ var webpackExports = typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__ : module.exports; /* eslint-enable camelcase, no-undef */ if (typeof webpackExports === 'function') { __REACT_HOT_LOADER__.register(webpackExports, 'module.exports', "/Users/mc/Simplon/React/testWp/src/components/componentsTry/ComponentTwo.js"); return; } /* eslint-disable no-restricted-syntax */ for (var key in webpackExports) { /* eslint-enable no-restricted-syntax */ if (!Object.prototype.hasOwnProperty.call(webpackExports, key)) { continue; } var namedExport = void 0; try { namedExport = webpackExports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/Users/mc/Simplon/React/testWp/src/components/componentsTry/ComponentTwo.js"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } /* eslint-disable camelcase, no-undef */ var webpackExports = typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__ : module.exports; /* eslint-enable camelcase, no-undef */ if (typeof webpackExports === 'function') { __REACT_HOT_LOADER__.register(webpackExports, 'module.exports', "/Users/mc/Simplon/React/testWp/src/components/guests/GuestList.js"); return; } /* eslint-disable no-restricted-syntax */ for (var key in webpackExports) { /* eslint-enable no-restricted-syntax */ if (!Object.prototype.hasOwnProperty.call(webpackExports, key)) { continue; } var namedExport = void 0; try { namedExport = webpackExports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/Users/mc/Simplon/React/testWp/src/components/guests/GuestList.js"); } } })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0), __webpack_require__(3)(module)))
 
 /***/ }),
