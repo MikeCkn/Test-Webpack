@@ -18353,6 +18353,8 @@ module.exports = camelize;
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__guests__ = __webpack_require__(33);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -18382,12 +18384,16 @@ var App = function (_Component) {
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
             valueInput: '',
-            color: 'red',
+            // status: 'red',
             guestList: [{
+                id: 1,
                 name: 'Bob',
+                status: 'red',
                 confirmed: false
             }, {
+                id: 2,
                 name: 'Albert',
+                status: 'red',
                 confirmed: false
             }]
 
@@ -18398,16 +18404,24 @@ var App = function (_Component) {
             });
         }, _this.inputSubmit = function (e) {
             e.preventDefault();
+            var generateId = function generateId() {
+                return Math.floor(Math.random() * 10000);
+            };
             _this.setState({
                 guestList: [].concat(_toConsumableArray(_this.state.guestList), [{
+                    id: generateId(),
                     name: _this.state.valueInput,
+                    status: 'red',
                     confirmed: false
                 }]),
                 valueInput: ''
             });
         }, _this.confirmedStatus = function () {
+            // const color =  this.state.status;
+            // color == 'red' ? this.setState({status: 'green'}) : this.setState({status: 'red'})
+            // const toggleTodo = (todo) => ({...todo, isComplete: !todo.isComplete})
             _this.setState({
-                color: 'green'
+                guestList: _extends({}, guestList, { confirmed: true, status: 'green' })
             });
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
@@ -18424,10 +18438,12 @@ var App = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__guests__["a" /* GuestInput */], {
                     valueInput: this.state.valueInput,
                     inputChange: this.inputChange,
-                    inputsubmit: this.inputSubmit }),
+                    inputsubmit: this.inputSubmit
+                }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__guests__["b" /* GuestList */], {
                     guestList: this.state.guestList,
-                    confirmedStatus: this.confirmedStatus })
+                    confirmedStatus: this.confirmedStatus
+                })
             );
         }
     }]);
@@ -18493,10 +18509,13 @@ var GuestInput = function (_Component) {
                     type: "text",
                     onChange: this.props.inputChange,
                     value: this.props.valueInput,
-                    placeholder: "Add a guest" }),
+                    placeholder: "Add a guest"
+                }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "button",
-                    { onClick: this.props.inputsubmit },
+                    {
+                        onClick: this.props.inputsubmit
+                    },
                     "ADD"
                 )
             );
@@ -18569,14 +18588,14 @@ var GuestList = function (_Component) {
                     "ul",
                     null,
                     " ",
-                    this.props.guestList.map(function (guest, index) {
+                    this.props.guestList.map(function (guest) {
                         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             "li",
-                            { key: index },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", onClick: _this2.props.confirmedStatus }),
+                            null,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", onClick: _this2.props.confirmedStatus, checked: _this2.props.confirmed }),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 "span",
-                                { style: { color: "" + _this2.props.color } },
+                                { style: { color: "" + _this2.props.status } },
                                 guest.name
                             )
                         );
