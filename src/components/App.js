@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
+import {generateId} from '../helpers/guestHelpers'
 import {GuestInput, GuestList} from './guests';
 
 export default class App extends Component {
 
 //STATE
     state = {
-        valueInput: '',
-        // status: 'red',
         guestList: [{
-            id: 1,
+            id: generateId(),
             name: 'Bob',
             status: 'red',
             confirmed: false
         }, {
-            id: 2,
+            id: generateId(),
             name: 'Albert',
             status: 'red',
             confirmed: false
         }],
+        valueInput: ''
     }
 
 //FUNCTIONS
@@ -29,10 +29,9 @@ export default class App extends Component {
 
     inputSubmit = (e) => {
         e.preventDefault()
-        const generateId = () => Math.floor(Math.random()*10000);
         this.setState({
             guestList: [...this.state.guestList, {
-                id : generateId(),
+                id: generateId(),
                 name: this.state.valueInput,
                 status: 'red',
                 confirmed: false
@@ -41,14 +40,69 @@ export default class App extends Component {
         })
     }
 
-    confirmedStatus = () => {
-        // const color =  this.state.status;
-        // color == 'red' ? this.setState({status: 'green'}) : this.setState({status: 'red'})
-        // const toggleTodo = (todo) => ({...todo, isComplete: !todo.isComplete})
-        this.setState({
-           guestList: {...guestList, confirmed: true, status: 'green'}
-        })
+    confirmedStatus = (guestId) => {
+        const chosenOne = this.state.guestList.filter(guest => guest.id === guestId)
+        console.log(chosenOne)
+        const changed = {...chosenOne[0],
+            confirmed: !chosenOne[0].confirmed,
+            status: chosenOne[0].status === 'red' ? 'green' : 'red'
+        }
+        const index = this.state.guestList.findIndex(guest => guest.id === guestId)
+        this.state.guestList.splice(index, 1, changed)
+        console.log(changed)
+        this.forceUpdate();
     }
+
+    // confirmedStatus = (index) => {
+    //     const changed = {...this.state.guestList[index],
+    //         confirmed: !this.state.guestList[index].confirmed
+    //     }
+    //     this.state.guestList.splice(index, 1, changed)
+    //     console.log(index, changed)
+    //     this.setState({
+    //         guestList: [...this.state.guestList]
+    //     })
+    // }
+
+    // confirmedStatus(e, guestId) {
+    //     const {guestList} = this.state.guestList;
+    //     const updatedStatus = guestList.map(guest => {
+    //         if (guestList.id === guestId) {
+    //             return {
+    //                 ...guest,
+    //                 confirmed: !guest.confirmed
+    //             }
+    //         }
+    //        return guest;
+    //     })
+    //     this.setState({
+    //         guestList: updatedStatus
+    //     })
+    // }
+
+
+    // confirmedStatus = (id) => {
+    //     const findById = (id, list) => list.find(item => item.id === id)
+    //     const toggleGuest = (guest) => ({...guest,
+    //         confirmed: !guest.confirmed
+    //     })
+
+    //     const updateGuest = (list, updated) => {
+    //         const updatedIndex = list.findIndex(item => item.id === updated.id)
+    //         return [
+    //             ...list.slice(0, updatedIndex),
+    //             updated,
+    //             ...list.slice(updatedIndex + 1)
+    //         ]
+    //     }
+    //     const guest = findById(id, this.state.GuestList)
+    //     const toggled = toggleGuest(guest)
+    //     const updatedGuests = updateGuest(this.state.guestList, toggled)
+    //     this.setState({
+    //         guestList: updatedGuests
+    //     })
+    // }
+
 
     render() {
         return (

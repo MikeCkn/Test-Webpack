@@ -7,9 +7,9 @@ export default class GuestInput extends Component {
             <div>
                 <input 
                     type="text" 
-                    placeholder="Add a guest"
-                    value={this.props.valueInput} 
                     onChange={this.props.inputChange} 
+                    value={this.props.valueInput} 
+                    placeholder="Add a guest"
                 />
                 <button onClick={this.props.inputsubmit}>ADD</button>
             </div>
