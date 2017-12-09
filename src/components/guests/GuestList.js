@@ -6,7 +6,7 @@ export default class GuestList extends Component {
         return (
             <div>
                 <ul> {this.props.guestList.map((guest, index) => 
-                    <li key={index}>
+                    <li className="animated slideInLeft" key={index}>
                         <input 
                             type="checkbox" 
                             onClick={() => this.props.confirmedStatus(guest.id)}

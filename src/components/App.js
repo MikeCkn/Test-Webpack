@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {generateId} from '../helpers/guestHelpers'
 import {GuestInput, GuestList} from './guests';
 import '../styles/index.css';
+import 'animate.css';
 
 export default class App extends Component {
 
