@@ -6,4 +6,5 @@
 body {
     background-image: url(https://images.unsplash.com/photo-1461823385004-d7660947a7c0?auto=format&fit=crop&w=2850&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D);
     background-size: cover;
+    padding-top: 1%;
 }

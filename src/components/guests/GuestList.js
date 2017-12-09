@@ -9,7 +9,8 @@ export default class GuestList extends Component {
                     <li key={index}>
                         <input 
                             type="checkbox" 
-                            onClick={() => this.props.confirmedStatus(guest.id)} 
+                            onClick={() => this.props.confirmedStatus(guest.id)}
+                            className="test"
                         />
                         <span style={{color: `${guest.status}`, paddingLeft: '10px'}}>{guest.name}</span>
                     </li>)}
