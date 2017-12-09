@@ -11,7 +11,7 @@ export default class GuestList extends Component {
                             type="checkbox" 
                             onClick={() => this.props.confirmedStatus(guest.id)} 
                         />
-                        <span style={{color: `${guest.status}`}}>{guest.name}</span>
+                        <span style={{color: `${guest.status}`, paddingLeft: '10px'}}>{guest.name}</span>
                     </li>)}
                 </ul>
             </div>
