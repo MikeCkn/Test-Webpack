@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {generateId} from '../helpers/guestHelpers'
-import {GuestInput, GuestList} from './guests';
+import {GuestInput, GuestList, Confirmation} from './guests';
 import '../styles/index.css';
 import 'animate.css';
 
@@ -53,6 +53,12 @@ export default class App extends Component {
         this.forceUpdate();
     }
 
+    displayConfirmedGuests = () => {
+        const confirmedOne = this.state.guestList.filter(guest => guest.confirmed === true)
+        confirmedOne.map(guest=>guest)
+        console.log(confirmedOne);
+    }
+
     render() {
         return (
             <div>
@@ -65,7 +71,11 @@ export default class App extends Component {
                 <GuestList 
                     guestList={this.state.guestList}
                     confirmedStatus={this.confirmedStatus}
-                />    
+                />
+
+                <Confirmation
+                    guestList={this.state.guestList}
+                />
             </div>
         );
     }

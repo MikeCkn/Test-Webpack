@@ -7,9 +7,9 @@ export default class GuestInput extends Component {
             <div>
                 <input 
                     type="text" 
-                    onChange={this.props.inputChange} 
                     value={this.props.valueInput} 
                     placeholder="New guest..."
+                    onChange={this.props.inputChange} 
                     className="addGuestInput animated slideInDown"
                 />
                 <button 
