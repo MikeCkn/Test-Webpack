@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {generateId} from '../helpers/guestHelpers'
 import {GuestInput, GuestList, Confirmation} from './guests';
 
-import css from '../styles/index.css';
+import '../styles/index.css';
 // import 'bootstrap';
 import 'animate.css';
 import {Button} from 'react-bootstrap';
@@ -50,7 +50,7 @@ export default class App extends Component {
         const chosenOne = this.state.guestList.filter(guest => guest.id === guestId)[0]
         const changed = {...chosenOne,
             confirmed: !chosenOne.confirmed,
-            status: chosenOne.status === '#FFF' ? '#1AAAAD' : '#FFF'
+            status: chosenOne.status === '#FFF' ? '#419BF9' : '#FFF'
         }
         const index = this.state.guestList.findIndex(guest => guest.id === guestId)
         // this.state.guestList.splice(index, 1, changed)
@@ -58,13 +58,6 @@ export default class App extends Component {
         this.setState({
             guestList: [...this.state.guestList.slice(0, index), changed, ...this.state.guestList.slice(index+1)]
         })
-    }
-
-
-    deleteGuest = (guestId) => {
-        const index = this.state.guestList.findIndex(guest => guest.id === guestId)
-        this.state.guestList.splice(index, 1)
-        this.forceUpdate();
     }
 
     editGuest= (guestId, newName) => {
@@ -75,10 +68,17 @@ export default class App extends Component {
         })
     }
 
+    deleteGuest = (guestId) => {
+        const index = this.state.guestList.findIndex(guest => guest.id === guestId)
+        this.state.guestList.splice(index, 1)
+        this.forceUpdate();
+    }
+
+
     render() {
         return (
             <div className="App">
-                <div className="App1">
+                
                     <GuestInput
                         valueInput={this.state.valueInput} 
                         inputChange={this.inputChange}
@@ -90,12 +90,12 @@ export default class App extends Component {
                         editGuest={this.editGuest}
                         deleteGuest={this.deleteGuest}
                     />
-                </div>
-                <div className="App2">   
+            
+              
                     <Confirmation
                         guestList={this.state.guestList}
                     />
-                </div>
+           
             </div>
         );
     }

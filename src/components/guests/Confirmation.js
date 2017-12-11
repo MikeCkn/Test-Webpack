@@ -8,10 +8,14 @@ export default class Confirmation extends Component {
             <div>
                 <h1 className="titleConfirmation">Confirmed Guests</h1>
                 <ul> {confirmedOne.map((guest, index) => 
-                    <li className="animated slideInRight" key={index}>
+                    <li 
+                        key={index}
+                        className="animated slideInRight"
+                    >
                         <span 
-                            style={{color: 'red'}}
-                            >{guest.name}
+                            className="guestNameConfirmed"
+                        >
+                            {guest.name}
                         </span>
                     </li>)}
                 </ul>

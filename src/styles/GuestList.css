@@ -1,17 +1,37 @@
-li {
+li  {
     display: flex;
     align-items: center;
     list-style: none;
-    font-size: 2em;
-}
-
-.deleteGuestButton {
-
-
 }
 
 .alignGuestElements {
-    width: 14%;
+    width: 16%;
     display: flex;
     justify-content: space-between;
+}
+
+.fa {
+    color: #FFF;
+}
+
+.fa-ban:hover {
+    color: #dd0b0b;
+}
+
+.fa-check:hover {
+    color: #46e244;
+}
+
+.guestName, .guestCheckbox {
+    font-size: 2em;
+}
+
+.test1 {
+    width: 100%;
+    padding: 0;
+    opacity: 30%;
+}
+
+#faon {
+color: red;
 }

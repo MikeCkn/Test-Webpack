@@ -25,33 +25,42 @@ export default class GuestItem extends Component {
         const display = this.state.edit ? 
                                         <div>
                                             <input 
+                                                className="test1"
                                                 type="text" 
                                                 ref={input => this.newName = input} 
                                                 defaultValue={this.props.guest.name}
                                             />
-                                            <button 
-                                                onClick={this.updateGuest}
-                                                >CONFIRM
-                                            </button>
+                                            <i 
+                                                onClick={this.updateGuest} 
+                                                class="fa fa-check" 
+                                                aria-hidden="true">
+                                            </i>
                                         </div> 
                                         : 
                                         <span  
                                             onClick={this.displayEditInput}
                                             style={{color: `${this.props.guest.status}`}}
-                                            >{this.props.guest.name}
+                                        >
+                                            {this.props.guest.name}
                                         </span>
         return (
-                <li className="alignGuestElements animated slideInLeft">
+                <li className="alignGuestElements">
                     <input 
+                        className="guestCheckbox animated fadeInDown"
                         type="checkbox"
                         onClick={() => this.props.confirmedStatus(this.props.guest.id)}
                     />
-                    {display}
-                    <Button 
+                    <span className="guestName animated bounceInLeft">
+                        {display}
+                    </span>
+                    <a 
+                        className="animated fadeInUp"
+                        href="#"
                         onClick={() => this.props.deleteGuest(this.props.guest.id)}
-                        style={{backgroundcolor: `${this.props.guest.status}`}}
-                        >X
-                    </Button>
+                    >
+                        <i class="fa fa-ban" aria-hidden="true"></i>
+                    </a>
+
                 </li>
             );
         }
