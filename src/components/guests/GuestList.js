@@ -8,7 +8,6 @@ export default class GuestList extends Component {
         return (
             <div>
                 <ul> {this.props.guestList.map((guest, index) => 
-
                     <GuestItem 
                         key={index} 
                         guest={guest}

@@ -15,7 +15,8 @@ export default class GuestInput extends Component {
                 <button 
                     onClick={this.props.inputsubmit}
                     className="buttonGuestAdd animated slideInDown"
-                >ADD</button>
+                    >ADD
+                </button>
             </div>
         );
     }

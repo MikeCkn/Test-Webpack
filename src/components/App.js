@@ -84,7 +84,6 @@ export default class App extends Component {
                         inputChange={this.inputChange}
                         inputsubmit={this.inputSubmit}
                     />
-
                     <GuestList 
                         guestList={this.state.guestList}
                         confirmedStatus={this.confirmedStatus}

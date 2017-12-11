@@ -10,7 +10,7 @@ li {
 
 }
 
-.test {
+.alignGuestElements {
     width: 14%;
     display: flex;
     justify-content: space-between;
