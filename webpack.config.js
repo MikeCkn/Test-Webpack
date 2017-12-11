@@ -16,13 +16,20 @@ module.exports = {
             loader: ['react-hot-loader/webpack', 'babel-loader']
         }, {
             test: /\.css$/,
-            loader: 'style-loader!css-loader'
+            loader: 'style-loader!css-loader',
+            // include: /flexboxgrid/
         }]
     }
-    // plugins: [
-    //     new HtmlPlugin({
-    //         title: 'TestX',
-    //         filename: path.join(__dirname, './public/index.html')
-    //     })
-    // ]
+  // plugins: [
+  //     new webpack.ProvidePlugin({
+  //       $: 'jquery',
+  //       jQuery: 'jquery',
+  //       'window.jQuery': 'jquery',
+  //       Popper: ['popper.js', 'default'],
+  //       // In case you imported plugins individually, you must also require them here:
+  //       Util: "exports-loader?Util!bootstrap/js/dist/util",
+  //       Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
+    
+  //     })
+  // ]
 }

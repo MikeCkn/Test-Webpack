@@ -1,0 +1,10 @@
+.titleConfirmation {
+    font-size: 1.5em;
+    padding: 0.8%;
+    margin: 0% 1%;
+    border: 4px solid #1AAAAD;
+    border-radius: 50px;
+    background-color: #FFF;
+    color: #1AAAAD;
+    width: 17%;
+}

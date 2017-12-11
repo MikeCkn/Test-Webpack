@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 
+import GuestItem from './GuestItem';
+
 export default class GuestList extends Component {
 
     render() {
         return (
             <div>
                 <ul> {this.props.guestList.map((guest, index) => 
-                    <li className="animated slideInLeft" key={index}>
-                        <input 
-                            type="checkbox" 
-                            onClick={() => this.props.confirmedStatus(guest.id)}
-                            className="test"
-                        />
-                        <span style={{color: `${guest.status}`, paddingLeft: '10px'}}>{guest.name}</span>
-                    </li>)}
+
+                    <GuestItem 
+                        key={index} 
+                        guest={guest}
+                        confirmedStatus={this.props.confirmedStatus}
+                        editGuest={this.props.editGuest}
+                        deleteGuest={this.props.deleteGuest}
+                    />)}
                 </ul>
             </div>
         );

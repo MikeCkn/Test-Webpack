@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+
 import {generateId} from '../helpers/guestHelpers'
 import {GuestInput, GuestList, Confirmation} from './guests';
-import '../styles/index.css';
+
+import css from '../styles/index.css';
+// import 'bootstrap';
 import 'animate.css';
+import {Button} from 'react-bootstrap';
 
 export default class App extends Component {
 
@@ -10,12 +14,12 @@ export default class App extends Component {
     state = {
         guestList: [{
             id: generateId(),
-            name: 'Mike',
+            name: 'Emily',
             status: '#FFF',
             confirmed: false
         }, {
             id: generateId(),
-            name: 'Bryan',
+            name: 'Ryan',
             status: '#FFF',
             confirmed: false
         }],
@@ -43,39 +47,56 @@ export default class App extends Component {
     }
 
     confirmedStatus = (guestId) => {
-        const chosenOne = this.state.guestList.filter(guest => guest.id === guestId)
-        const changed = {...chosenOne[0],
-            confirmed: !chosenOne[0].confirmed,
-            status: chosenOne[0].status === '#FFF' ? '#1AAAAD' : '#FFF'
+        const chosenOne = this.state.guestList.filter(guest => guest.id === guestId)[0]
+        const changed = {...chosenOne,
+            confirmed: !chosenOne.confirmed,
+            status: chosenOne.status === '#FFF' ? '#1AAAAD' : '#FFF'
         }
         const index = this.state.guestList.findIndex(guest => guest.id === guestId)
-        this.state.guestList.splice(index, 1, changed)
+        // this.state.guestList.splice(index, 1, changed)
+        // this.forceUpdate();
+        this.setState({
+            guestList: [...this.state.guestList.slice(0, index), changed, ...this.state.guestList.slice(index+1)]
+        })
+    }
+
+
+    deleteGuest = (guestId) => {
+        const index = this.state.guestList.findIndex(guest => guest.id === guestId)
+        this.state.guestList.splice(index, 1)
         this.forceUpdate();
     }
 
-    displayConfirmedGuests = () => {
-        const confirmedOne = this.state.guestList.filter(guest => guest.confirmed === true)
-        confirmedOne.map(guest=>guest)
-        console.log(confirmedOne);
+    editGuest= (guestId, newName) => {
+        const index = this.state.guestList.findIndex(guest => guest.id === guestId)
+        const updatedName = {...this.state.guestList[index], name: newName}
+        this.setState({
+            guestList: [...this.state.guestList.slice(0, index), updatedName, ...this.state.guestList.slice(index+1)]
+        })
     }
 
     render() {
         return (
-            <div>
-                <GuestInput
-                    valueInput={this.state.valueInput} 
-                    inputChange={this.inputChange}
-                    inputsubmit={this.inputSubmit}
-                />
+            <div className="App">
+                <div className="App1">
+                    <GuestInput
+                        valueInput={this.state.valueInput} 
+                        inputChange={this.inputChange}
+                        inputsubmit={this.inputSubmit}
+                    />
 
-                <GuestList 
-                    guestList={this.state.guestList}
-                    confirmedStatus={this.confirmedStatus}
-                />
-
-                <Confirmation
-                    guestList={this.state.guestList}
-                />
+                    <GuestList 
+                        guestList={this.state.guestList}
+                        confirmedStatus={this.confirmedStatus}
+                        editGuest={this.editGuest}
+                        deleteGuest={this.deleteGuest}
+                    />
+                </div>
+                <div className="App2">   
+                    <Confirmation
+                        guestList={this.state.guestList}
+                    />
+                </div>
             </div>
         );
     }
