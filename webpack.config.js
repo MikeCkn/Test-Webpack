@@ -33,3 +33,32 @@ module.exports = {
   //     })
   // ]
 }
+
+
+// const path = require('path');
+// module.exports = {
+//     entry: './src/index.js',
+//     output: {
+//         //path: 'build'
+//         path: path.resolve(__dirname, 'dist'),
+//         filename: 'bundle.js' // bundle est le nom par convention
+//     },
+//     module: {
+//         loaders: [
+//             {
+//                 test: /\.js$/, //regex pour chercher les .js
+//                 exclude: /node_modules/,
+//                 loaders: ['react-hot-loader/webpack', 'babel-loader'] // pour charger, transpiler les fichiers js
+//             },
+//             {
+//                 test: /\.css$/, //regex pour chercher les .css
+//                 loader: 'style-loader!css-loader?modules', // pour importer les css, le style loader est pris en compte avant le css
+//                 include: /flexboxgrid/
+//             }
+//         ]
+//     },
+//     devServer: {
+//         inline: true,
+//         port: 3000
+//     }
+// };

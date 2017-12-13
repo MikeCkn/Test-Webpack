@@ -78,24 +78,24 @@ export default class App extends Component {
     render() {
         return (
             <div className="App">
-                
+                <div className="App1">
                     <GuestInput
                         valueInput={this.state.valueInput} 
                         inputChange={this.inputChange}
                         inputsubmit={this.inputSubmit}
                     />
+                </div>    
                     <GuestList 
                         guestList={this.state.guestList}
                         confirmedStatus={this.confirmedStatus}
                         editGuest={this.editGuest}
                         deleteGuest={this.deleteGuest}
                     />
-            
-              
+                <div className="App2">    
                     <Confirmation
                         guestList={this.state.guestList}
                     />
-           
+                </div>    
             </div>
         );
     }

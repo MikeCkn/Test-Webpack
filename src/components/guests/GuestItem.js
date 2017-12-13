@@ -23,45 +23,49 @@ export default class GuestItem extends Component {
 
     render() {
         const display = this.state.edit ? 
-                                        <div>
+                                        <div className="divEditInput ">
                                             <input 
-                                                className="test1"
+                                                className="guestCheckbox animated fadeInDown"
+                                                type="checkbox"
+                                                onClick={() => this.props.confirmedStatus(this.props.guest.id)}
+                                            />                                        
+                                            <input 
+                                                className="editInput animated flipInX"
                                                 type="text" 
                                                 ref={input => this.newName = input} 
                                                 defaultValue={this.props.guest.name}
                                             />
                                             <i 
                                                 onClick={this.updateGuest} 
-                                                class="fa fa-check" 
+                                                className="fa fa-check" 
                                                 aria-hidden="true">
                                             </i>
                                         </div> 
                                         : 
-                                        <span  
-                                            onClick={this.displayEditInput}
-                                            style={{color: `${this.props.guest.status}`}}
-                                        >
-                                            {this.props.guest.name}
-                                        </span>
-        return (
-                <li className="alignGuestElements">
-                    <input 
-                        className="guestCheckbox animated fadeInDown"
-                        type="checkbox"
-                        onClick={() => this.props.confirmedStatus(this.props.guest.id)}
-                    />
-                    <span className="guestName animated bounceInLeft">
-                        {display}
-                    </span>
-                    <a 
-                        className="animated fadeInUp"
-                        href="#"
-                        onClick={() => this.props.deleteGuest(this.props.guest.id)}
-                    >
-                        <i class="fa fa-ban" aria-hidden="true"></i>
-                    </a>
+                                        <div className="alignGuestElements">
+                                            <input 
+                                                className="guestCheckbox animated fadeInDown"
+                                                type="checkbox"
+                                                onClick={() => this.props.confirmedStatus(this.props.guest.id)}
+                                            />
+                                            <span  
+                                                className="guestName animated flipInX"
+                                                onClick={this.displayEditInput}
+                                                style={{color: `${this.props.guest.status}`}}
+                                            >
+                                                {this.props.guest.name}
+                                            </span>
+                                            <a 
+                                                className="animated fadeInUp iconDeleteGuest"
+                                                href="#"
+                                                onClick={() => this.props.deleteGuest(this.props.guest.id)}
+                                            >
+                                                <i className="fa fa-ban" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
 
-                </li>
+        return (
+                <li>{display}</li>
             );
         }
     }

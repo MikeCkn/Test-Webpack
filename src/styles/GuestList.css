@@ -1,14 +1,34 @@
 li  {
-    display: flex;
-    align-items: center;
     list-style: none;
 }
 
 .alignGuestElements {
-    width: 16%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    width: 25%;
+    height: 60px;
+    font-size: 2em;
 }
+
+.guestName, .guestCheckbox {
+}
+
+.divEditInput {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 25%;
+    height: 60px;
+    font-size: 2em;
+}
+
+.editInput {
+    width: 50%;
+    text-align: center;
+}
+
+
 
 .fa {
     color: #FFF;
@@ -20,18 +40,4 @@ li  {
 
 .fa-check:hover {
     color: #46e244;
-}
-
-.guestName, .guestCheckbox {
-    font-size: 2em;
-}
-
-.test1 {
-    width: 100%;
-    padding: 0;
-    opacity: 30%;
-}
-
-#faon {
-color: red;
 }
